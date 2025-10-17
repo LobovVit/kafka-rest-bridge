@@ -23,9 +23,9 @@
 *   •	Без DLQ: при окончательной неудаче оффсет не коммитится — сообщение будет переработано позже (без потери).
 
 
-export KAFKA_BROKERS=localhost:9092
-export INPUT_TOPIC=in.requests
-export OUTPUT_TOPIC=out.responses
-export GROUP_ID=bridge-g1
-export REST_URL=http://localhost:8080/echo
-go run .
+*   export KAFKA_BROKERS=localhost:9092
+*   export INPUT_TOPIC=in.requests
+*   export OUTPUT_TOPIC=out.responses
+*   export GROUP_ID=bridge-g1
+*   export REST_URL=http://localhost:8080/echo
+*   go run .
