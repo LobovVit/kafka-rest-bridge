@@ -5,7 +5,7 @@
 * •	INPUT_TOPIC — входной топик Kafka
 * •	OUTPUT_TOPIC — выходной топик для ответа REST
 * •	GROUP_ID — consumer group id
-* •	REST_URL — URL вашего синхронного REST сервиса
+* •	REST_URL — URL  синхронного REST сервиса
 * •	HTTP_METHOD — POST/GET/… (по умолчанию POST)
 * •	HTTP_HEADERS — доп. HTTP-заголовки, формат: K1:V1;K2:V2
 * •	HTTP_TIMEOUT_MS — таймаут HTTP-запроса (по умолчанию 10000)
@@ -21,3 +21,11 @@
 *   •	Propagation ключа и заголовков Kafka: ключ сообщения сохраняется, заголовки копируются в ответ + добавляется http_status.
 *   •	DLQ (опционально): при окончательной неудаче REST сообщение отправляется в DLQ_TOPIC и оффсет коммитится, чтобы не стопорить поток.
 *   •	Без DLQ: при окончательной неудаче оффсет не коммитится — сообщение будет переработано позже (без потери).
+
+
+export KAFKA_BROKERS=localhost:9092
+export INPUT_TOPIC=in.requests
+export OUTPUT_TOPIC=out.responses
+export GROUP_ID=bridge-g1
+export REST_URL=http://localhost:8080/echo
+go run .
